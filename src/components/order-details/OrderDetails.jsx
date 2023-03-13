@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./OrderDetails.module.css";
 import { useSelector } from "react-redux";
+import { getorder } from "../utils/data";
 
 export function OrderDetails() {
-  const orderNumber = useSelector((store) => store.order.orderNumber);
-  
+  const { orderNumber } = useSelector(getorder);
+
   return (
     <div className={styles.container}>
       <p className="text text_type_digits-large mb-8 mt-4">{orderNumber}</p>

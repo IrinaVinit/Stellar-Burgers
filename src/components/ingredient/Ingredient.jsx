@@ -1,3 +1,4 @@
+import React from "react";
 import {
   CurrencyIcon,
   Counter,
@@ -5,13 +6,16 @@ import {
 import PropTypes from "prop-types";
 import styles from "./Ingredient.module.css";
 import { IngredientPropType } from "../types/common-types.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useDrag } from "react-dnd";
-import { DATA_MODAL_SUCCESS } from "../../services/actions/currentIngredient";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { getStoreBurgerConstructor } from "../utils/data";
 
 const Ingredient = ({ data, name, price, image, type }) => {
+  const location = useLocation();
+
   const { selectedIngredients, selectedBun } = useSelector(
-    (store) => store.burgerConstructor
+    getStoreBurgerConstructor
   );
 
   const count =
@@ -23,11 +27,6 @@ const Ingredient = ({ data, name, price, image, type }) => {
       : selectedBun?._id === data._id
       ? 1
       : 0;
-  const dispatch = useDispatch();
-
-  const hahdleOpen = (data) => {
-    dispatch({ type: DATA_MODAL_SUCCESS, payload: data });
-  };
 
   const [{ opacity }, ref] = useDrag({
     type: "ingredient",
@@ -38,25 +37,29 @@ const Ingredient = ({ data, name, price, image, type }) => {
   });
 
   return (
-    <li
-      className={`${styles.ingredientItem} mb-8`}
-      type={type}
-      onClick={() => hahdleOpen(data)}
-      style={{ opacity: { opacity } }}
-      ref={ref}
-    >
-      <img className="ml-4 mr-4 mb-1" src={image} alt={name} />
-      {count > 0 && <Counter count={count} size="default" extraClass="m-1" />}
-      <div className={`${styles.price} mb-1`}>
-        <p className="text text_type_digits-default mr-2">{price}</p>
-        <CurrencyIcon type="primary" />
-      </div>
-      <p className={`${styles.name} text text_type_main-default`}>{name}</p>
-    </li>
+    <>
+      <Link
+        to={`/ingredients/${data._id}`}
+        state={{ background: location }}
+        className={`${styles.ingredientItem} mb-8`}
+        type={type}
+        style={{ opacity: { opacity } }}
+        ref={ref}
+      >
+        <img className="ml-4 mr-4 mb-1" src={image} alt={name} />
+        {count > 0 && <Counter count={count} size="default" extraClass="m-1" />}
+        <div className={`${styles.price} mb-1`}>
+          <p className="text text_type_digits-default mr-2">{price}</p>
+          <CurrencyIcon type="primary" />
+        </div>
+        <p className={`${styles.name} text text_type_main-default`}>{name}</p>
+      </Link>
+      <Outlet />
+    </>
   );
 };
 
-export default Ingredient;
+export default React.memo(Ingredient);
 
 Ingredient.prototype = {
   data: PropTypes.shape(IngredientPropType).isRequired,

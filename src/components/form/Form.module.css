@@ -1,0 +1,39 @@
+.form {
+    
+    margin: auto;
+    width: 480px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.spanContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-top: 80px;
+}
+.span {
+    display: flex;
+    gap: 8px;
+    
+}
+
+.link {
+    color: #4C4CFF;
+    text-decoration: none;
+}

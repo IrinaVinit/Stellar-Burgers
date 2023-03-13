@@ -5,13 +5,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ConstructorItem.module.css";
 
-function ConstructorItem({
-  isLocked,
-  type,
-  text,
-  price,
-  thumbnail
-}) {
+function ConstructorItem({ isLocked, type, text, price, thumbnail }) {
   return (
     <li className={styles.item}>
       <div className={styles.itemWrapper}>

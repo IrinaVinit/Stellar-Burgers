@@ -11,10 +11,10 @@ export function makeOrder(ingredientArr) {
         type: GET_NUMBER_REQUEST,
       });
     getOrderNumber(ingredientArr).then((res) => {
-      if (res) {
+      if (res.success) {
         dispatch({
           type: GET_NUMBER_SUCCESS,
-          number: res.order.number,
+          payload: res.order.number,
         });
       } else {
         dispatch({

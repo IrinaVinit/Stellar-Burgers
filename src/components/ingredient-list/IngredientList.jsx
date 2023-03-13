@@ -3,9 +3,10 @@ import styles from "./IngredientList.module.css";
 import { useMemo } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
+import { getStoreIngredients } from "../utils/data";
 
 const IngredientList = ({ ingType, title }) => {
-  const ingredients = useSelector((store) => store.ingredients.ingredients);
+  const { ingredients } = useSelector(getStoreIngredients);
   const menu = useMemo(
     () => ingredients.filter((item) => item.type === ingType),
     [ingType, ingredients]

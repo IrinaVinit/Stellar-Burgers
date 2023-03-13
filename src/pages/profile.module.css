@@ -1,0 +1,40 @@
+.profileContainer {
+  display: flex;
+  padding-top: 120px;
+}
+.position {
+  margin-left: 60px;
+}
+
+.profileSection {
+  margin-left: 340px;
+  width: 320px;
+}
+.profileList {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+}
+
+.link {
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+  color: #8585ad;
+  width: 320px;
+  min-height: 64px;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  align-self: flex-end;
+}
+
+.buttonSize {
+padding: 16px 8px;
+}
+

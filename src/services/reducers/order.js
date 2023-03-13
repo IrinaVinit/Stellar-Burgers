@@ -19,7 +19,7 @@ export const orderReducer = (state = orderInitialState, action) => {
     }
     case GET_NUMBER_SUCCESS: {
       return {
-        orderNumber: action.number,
+        orderNumber: action.payload,
         modalOpened: true,
       };
     }

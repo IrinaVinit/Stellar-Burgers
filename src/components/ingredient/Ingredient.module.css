@@ -5,6 +5,8 @@
 
 .ingredientItem {
   position: relative;
+  text-decoration: none;
+  color: white;
   height: 208px;
   display: flex;
   flex-direction: column;
